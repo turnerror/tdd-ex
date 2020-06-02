@@ -27,4 +27,10 @@ class TestGreet extends TestCase
         $actual = greet(['Jill', 'Jane']);
         $this->assertEquals("Hello, Jill and Jane.", $actual);
     }
+
+    public function testSuccess_anyXNames()
+    {
+        $actual = greet(["Amy", "Brian", "Charlotte", "Jeff"]);
+        $this->assertEquals("Hello, Amy, Brian, Charlotte, and Jeff.", $actual);
+    }
 }
