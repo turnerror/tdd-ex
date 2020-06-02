@@ -1,6 +1,6 @@
 <?php
 
 function greet($name){
-    $msg = 'Hello, ' . $name . '.';
-    return $msg;
+    $insert = $name ?? 'my friend';
+    return 'Hello, ' . $insert . '.';
 }

@@ -10,4 +10,9 @@ class TestGreet extends TestCase
         $actual = greet('Bob');
         $this->assertEquals('Hello, Bob.', $actual);
     }
+    public function testSuccess_null()
+    {
+        $actual = greet(null);
+        $this->assertEquals('Hello, my friend.', $actual);
+    }
 }
