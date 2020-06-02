@@ -63,4 +63,22 @@ class TestGreet extends TestCase
         $actual = greet(["Amy", "BRIAN", "Charlotte", "Jeff"]);
         $this->assertEquals("Hello, Amy, Charlotte, and Jeff. AND HELLO BRIAN!", $actual);
     }
+
+    public function testSuccess_commaString1()
+    {
+        $actual = greet(["Amy, BRIAN, Charlotte, Jeff"]);
+        $this->assertEquals("Hello, Amy, Charlotte, and Jeff. AND HELLO BRIAN!", $actual);
+    }
+
+    public function testSuccess_commaString2()
+    {
+        $actual = greet(["Amy, BRIAN", "Charlotte", "Jeff, ALEX"]);
+        $this->assertEquals("Hello, Amy, Charlotte, and Jeff. AND HELLO BRIAN AND ALEX!", $actual);
+    }
+
+    public function testSuccess_commaString3()
+    {
+        $actual = greet(['Jill, Jane']);
+        $this->assertEquals("Hello, Jill and Jane.", $actual);
+    }
 }

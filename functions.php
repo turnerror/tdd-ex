@@ -3,15 +3,12 @@
 function greet($names){
 
     if (is_array($names)) {
-        $lowercaseNames = [];
-        $uppercaseNames = [];
-        foreach ($names as $i => $name) {
-            if (strtoupper($name) === $name) {
-                $uppercaseNames[] = $names[$i];
-            } else {
-                $lowercaseNames[] = $names[$i];
-            }
-        }
+
+        $sortedNames = sortNames($names);
+
+        $lowercaseNames = $sortedNames['lower'];
+        $uppercaseNames = $sortedNames['upper'];
+
         $uppercaseMsg = '';
         $lowercaseMsg = '';
 
@@ -72,3 +69,26 @@ function  handleName($name) {
     return $return;
 }
 
+function sortNames($names) {
+    $lowercaseNames = [];
+    $uppercaseNames = [];
+
+    foreach ($names as $i => $name) {
+        if (!preg_match('/^[^, ]*$/', $name )){
+            $newNames = explode(', ', $name);
+            $sortedNames = sortNames($newNames);
+
+            $lowercaseNames = array_merge($lowercaseNames, $sortedNames['lower']);
+            $uppercaseNames = array_merge($uppercaseNames, $sortedNames['upper']);
+
+            continue;
+        }
+        if (strtoupper($name) === $name) {
+            $uppercaseNames[] = $names[$i];
+        } else {
+            $lowercaseNames[] = $names[$i];
+        }
+    }
+
+    return ['lower' => $lowercaseNames, 'upper' => $uppercaseNames];
+}
