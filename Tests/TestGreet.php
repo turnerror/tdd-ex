@@ -15,4 +15,10 @@ class TestGreet extends TestCase
         $actual = greet(null);
         $this->assertEquals('Hello, my friend.', $actual);
     }
+
+    public function testSuccess_uppercase()
+    {
+        $actual = greet('DUDE');
+        $this->assertEquals('HELLO DUDE!', $actual);
+    }
 }

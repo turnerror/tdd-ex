@@ -1,6 +1,11 @@
 <?php
 
 function greet($name){
-    $insert = $name ?? 'my friend';
-    return 'Hello, ' . $insert . '.';
+    if (strtoupper($name) === $name) {
+        $msg = 'HELLO ' . $name . "!";
+    } else {
+        $insert = $name ?? 'my friend';
+        $msg = 'Hello, ' . $insert . '.';
+    }
+    return $msg;
 }
